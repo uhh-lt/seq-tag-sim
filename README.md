@@ -44,12 +44,12 @@ To use advanced features, additional software and data may be required.
 Depending on the type of embedding to be used
 * download a [fastText](https://fasttext.cc/) model
 * install [AllenNLP](https://github.com/allenai/allennlp) in your active Python environment to use contextual [ELMo](https://allennlp.org/elmo) embeddings
-* install [bert-as-service](https://github.com/hanxiao/bert-as-service) in your active Python environment, download a suitable model and start the service to use contextual [BERT](https://github.com/google-research/bert) embeddings.
+* install [bert-as-service](https://github.com/hanxiao/bert-as-service) in your active Python environment, download a suitable model and start the service to use contextual [BERT](https://github.com/google-research/bert) embeddings with the following arguments: `bert-serving-start -model_dir path/to/multi_cased_L-12_H-768_A-12/ -num_worker=1 -max_seq_len=NONE -cased_tokenization -pooling_strategy=NONE -device_map 0`
 
 To use non-contextual word embeddings, i.e. fastText, supply the `-e path/to/embedding.bin` option when running the program.
 As the fastText library takes some time to load the model, this may add considerable run time overhead when comparing small datasets.
 The preferred option, is to use BERT embeddings.
-To do so, run `seq-tag-sim -c bert`.
+To do so, run `seq-tag-sim -c bert dataset1 dataset2`.
 If the `bert-as-serice` server is not running on the same computer, use the `-e` option to set the server's network address.
 
 ## Functioning principle
